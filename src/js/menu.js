@@ -1,26 +1,29 @@
 (function() {
-  'use strict';
+    'use strict';
 
-  function Menu() {}
+    function Menu() {}
 
-  Menu.prototype = {
-    create: function () {
-      var text = this.add.text(this.game.width * 0.5, this.game.height * 0.5,
-        'This is an implementation of\nConway\'s Game of Life \n using JavaScript and Phaser', {font: '32px Arial', fill: '#ffffff', align: 'center'
-      });
-      text.anchor.set(0.5);
-      this.input.onDown.add(this.onDown, this);
-    },
+    Menu.prototype = {
+        create: function() {
+            var text = this.add.text(this.game.width * 0.5, this.game.height * 0.5,
+                'This is an implementation of\nConway\'s Game of Life \n using JavaScript and Phaser', {
+                    font: '32px Arial',
+                    fill: '#ffffff',
+                    align: 'center'
+                });
+            text.anchor.set(0.5);
+            this.input.onDown.add(this.onDown, this);
+        },
 
-    update: function () {
+        update: function() {
 
-    },
+        },
 
-    onDown: function () {
-      this.game.state.start('game');
-    }
-  };
+        onDown: function() {
+            this.game.state.start('game');
+        }
+    };
 
-  window['gameoflifephaser'] = window['gameoflifephaser'] || {};
-  window['gameoflifephaser'].Menu = Menu;
+    window['gameoflifephaser'] = window['gameoflifephaser'] || {};
+    window['gameoflifephaser'].Menu = Menu;
 }());

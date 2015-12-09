@@ -1,5 +1,5 @@
 var Cell = function(game, x, y, size) {
-    Phaser.Sprite.call(this, game, x * size, y * size, 'shapes', 'Square');
+    Phaser.Image.call(this, game, x * size, y * size, 'shapes', 'Square');
 
     this.width = this.height = size;
 
@@ -16,7 +16,7 @@ var Cell = function(game, x, y, size) {
     this.game.add.existing(this);
 };
 
-Cell.prototype = Object.create(Phaser.Sprite.prototype);
+Cell.prototype = Object.create(Phaser.Image.prototype);
 Cell.prototype.constructor = Cell;
 
 Cell.prototype.reset = function() {};
@@ -33,21 +33,21 @@ Cell.prototype.setState = function() {
         this.isAlive = false;
     }
 
-}
+};
 
 Cell.prototype.updateDisplay = function() {
-    if(this.willBeAlive) {
+    if (this.willBeAlive) {
         this.visible = true;
     } else {
         this.visible = false;
     }
-}
+};
 
 Cell.prototype.setNextState = function(neighboursAlive) {
 
-    if (neighboursAlive == 3) {
+    if (neighboursAlive === 3) {
         this.willBeAlive = true;
-    } else if (neighboursAlive == 2) {
+    } else if (neighboursAlive === 2) {
         if (this.isAlive) {
             this.willBeAlive = true;
         } else {
@@ -57,4 +57,4 @@ Cell.prototype.setNextState = function(neighboursAlive) {
         this.willBeAlive = false;
     }
 
-}
+};
