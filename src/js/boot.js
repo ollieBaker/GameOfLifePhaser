@@ -1,34 +1,48 @@
-(function () {
-  'use strict';
+(function() {
+    'use strict';
 
-  function Boot() {}
+    function Boot() {}
 
-  Boot.prototype = {
-    preload: function () {
-      this.load.image('preloader', 'assets/preloader.gif');
-    },
+    Boot.prototype = {
+        preload: function() {
+            this.load.image('preloader', 'assets/preloader.gif');
+        },
 
-    create: function () {
-      // configure game
-      this.game.input.maxPointers = 1;
+        create: function() {
+            // configure game
+            this.game.input.maxPointers = 1;
 
-      if (this.game.device.desktop) {
-        this.game.scale.pageAlignHorizontally = true;
-      } else {
-        this.game.scale.scaleMode = Phaser.ScaleManager.SHOW_ALL;
-        this.game.scale.minWidth =  480;
-        this.game.scale.minHeight = 260;
-        this.game.scale.maxWidth = 640;
-        this.game.scale.maxHeight = 480;
-        this.game.scale.forceOrientation(true);
-        this.game.scale.pageAlignHorizontally = true;
-        this.game.scale.setScreenSize(true);
-      }
-      this.game.state.start('preloader');
-    }
-  };
+            if (this.game.device.desktop) {
+                this.game.scale.pageAlignHorizontally = true;
+            } else {
+                this.game.scale.scaleMode = Phaser.ScaleManager.SHOW_ALL;
+                this.game.scale.minWidth = 480;
+                this.game.scale.minHeight = 260;
+                this.game.scale.maxWidth = 640;
+                this.game.scale.maxHeight = 480;
+                this.game.scale.forceOrientation(true);
+                this.game.scale.pageAlignHorizontally = true;
+                this.game.scale.enterIncorrectOrientation.add(this.handleIncorrect);
+                this.game.scale.leaveIncorrectOrientation.add(this.handleCorrect);
 
-  window['gameoflifephaser'] = window['gameoflifephaser'] || {};
-  window['gameoflifephaser'].Boot = Boot;
+            }
+            this.game.state.start('preloader');
+        },
+
+        handleIncorrect: function() {
+
+            document.getElementById('orientation').style.display = 'block';
+
+        },
+
+        handleCorrect: function() {
+            document.getElementById('orientation').style.display = 'none';
+
+        }
+    };
+
+
+
+    window['gameoflifephaser'] = window['gameoflifephaser'] || {};
+    window['gameoflifephaser'].Boot = Boot;
 }());
-
