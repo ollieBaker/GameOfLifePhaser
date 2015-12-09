@@ -33,7 +33,7 @@
             this.neighbours.push(new Point(1, 1));
 
             //calc offset on x axis so our grid is centered
-            var offsetX = (this.game.width - (this.GRID_SIZE*this.CELL_SIZE))/2;
+            var offsetX = (this.game.width - (this.GRID_SIZE * this.CELL_SIZE)) / 2;
 
             //populate our grid with cells
             for (var x = 0; x < this.GRID_SIZE; x++) {
@@ -45,8 +45,14 @@
                 }
             }
 
+            var restartBtn = document.getElementById('restartBtn');
+            restartBtn.onclick = this.restart.bind(this);
+
+            var pauseBtn = document.getElementById('pauseBtn');
+            pauseBtn.onclick = this.togglePause.bind(this);
+
             //start the simulation after the user's clicked, also allows pausing the sim
-            this.input.onDown.add(this.onInputDown, this);
+            this.input.onDown.add(this.togglePause, this);
         },
 
         update: function() {
@@ -110,7 +116,19 @@
 
         },
 
-        onInputDown: function() {
+        restart: function() {
+            var GRID_SIZE = this.GRID_SIZE;
+            for (var x = 0; x < GRID_SIZE; x++) {
+                for (var y = 0; y < GRID_SIZE; y++) {
+                    var cell = this.grid[x * GRID_SIZE + y];
+                    cell.reset();
+                }
+            }
+        },
+
+        togglePause: function() {
+            var pauseBtn = document.getElementById('pauseBtn');
+            pauseBtn.innerHTML = this.isRunning ? "Play" : "Pause";
             this.isRunning = !this.isRunning;
         }
     };

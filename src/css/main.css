@@ -14,3 +14,22 @@ body {
     background-position: center center;
     display: none;
 }
+.ui {
+	position: absolute;
+	width: 100%;
+	z-index: 99;
+}
+.wrap {
+	width: 100%;
+	max-width: 700px;
+	margin: auto;
+}
+.btn {
+	float:left;
+	width: 80px;
+}
+.btnWrap {
+	width: 100%;
+	float: left;
+	margin-bottom: 1em;
+}

@@ -19,7 +19,16 @@ var Cell = function(game, x, y, size) {
 Cell.prototype = Object.create(Phaser.Image.prototype);
 Cell.prototype.constructor = Cell;
 
-Cell.prototype.reset = function() {};
+Cell.prototype.reset = function() {
+    this.isAlive = false;
+    this.willBeAlive = false;
+    this.visible = false;
+    if (Math.random() < 0.5) {
+        this.isAlive = true;
+        this.willBeAlive = true;
+        this.visible = true;
+    }
+};
 
 Cell.prototype.update = function() {};
 
