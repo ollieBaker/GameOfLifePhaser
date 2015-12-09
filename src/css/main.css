@@ -62,6 +62,7 @@ body {
     background-repeat: no-repeat;
     background-position: center center;
     display: none;
+    z-index: 101;
 }
 .ui {
 	position: absolute;

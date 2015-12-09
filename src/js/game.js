@@ -11,7 +11,6 @@
             this.CELL_SIZE = 4;
             this.GRID_SIZE = Math.floor(this.game.height / this.CELL_SIZE);
 
-
             this.grid = [];
             this.neighbours = [];
 

@@ -23,7 +23,7 @@
             this.game.add.tween(this.titleTxt).to({
                 alpha: 0
             }, 700, Phaser.Easing.Linear.None, true).onComplete.addOnce(function() {
-                this.game.state.start('game')
+                this.game.state.start('game');
             }, this);
 
         }

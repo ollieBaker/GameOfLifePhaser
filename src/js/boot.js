@@ -36,6 +36,7 @@
         },
 
         handleCorrect: function() {
+          
             document.getElementById('orientation').style.display = 'none';
 
         }
