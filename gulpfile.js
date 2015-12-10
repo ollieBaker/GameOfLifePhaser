@@ -18,7 +18,8 @@ paths = {
         'src/bower_components/phaser-official/build/custom/phaser-no-physics.min.js'
     ],
     js: ['src/js/**/*.js'],
-    dist: './dist/'
+    dist: './dist/',
+    distCss: './dist/css'
 };
 
 gulp.task('clean', function(cb) {
@@ -56,7 +57,7 @@ gulp.task('minifycss', ['clean'], function() {
         .pipe(rename({
             suffix: '.min'
         }))
-        .pipe(gulp.dest(paths.dist))
+        .pipe(gulp.dest(paths.distCss))
         .on('error', gutil.log);
 });
 
